@@ -15,11 +15,12 @@ async function fetchData() {
         }
 
         const data = await response.json();
-        console.log(data);
+        const results = data.docs.slice(0, 10);
+        console.log(results);
     }
     catch(error) {
         console.error(error);
     }
 }
 
-fetchData();
+document.getElementById("searchButton").addEventListener("click", fetchData);
