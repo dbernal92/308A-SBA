@@ -3,9 +3,12 @@
 //     .then(data => console.log(data))
 //     .catch(error => console.error(error));
 
-async function fetchData(params) {
+async function fetchData() {
     try {
-        const response = await fetch("https://openlibrary.org/search.json?q=harry+potter");
+
+        const bookInfoSearch = document.getElementById("searchInput").value.trim().toLowerCase();
+        const query = bookInfoSearch.replace(/\s+/g, "+")
+        const response = await fetch(`https://openlibrary.org/search.json?q=${query}`);
 
         if(!response.ok) {
             throw new Error("Could not find resource!");
